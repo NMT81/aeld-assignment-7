@@ -311,7 +311,9 @@ static struct file_operations scullpipe_proc_ops = {
  */
 struct file_operations scull_pipe_fops = {
 	.owner =	THIS_MODULE,
+#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 12, 0)
 	.llseek =	no_llseek,
+#endif
 	.read =		scull_p_read,
 	.write =	scull_p_write,
 	.poll =		scull_p_poll,
